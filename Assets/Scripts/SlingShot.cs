@@ -76,7 +76,7 @@ public class SlingShot : MonoBehaviour
         isStartDraw = false;
         HideLine();
     }
-    public Vector3 GetSetPosition()
+    public Vector3 GetCurrentPosition()
     {
         return SlingShotMiddlePosition.transform.position;
     }
