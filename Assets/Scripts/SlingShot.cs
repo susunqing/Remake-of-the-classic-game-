@@ -23,7 +23,7 @@ public class SlingShot : MonoBehaviour
         Instance = this;
 
         RightLineRenderer = GameObject.Find("RightLineRenderer").GetComponent<LineRenderer>();
-        Debug.Log(RightLineRenderer+"111");
+        //Debug.Log(RightLineRenderer+"111");
         LiftLineRenderer = GameObject.Find("LiftLineRenderer").GetComponent<LineRenderer>();
 
 

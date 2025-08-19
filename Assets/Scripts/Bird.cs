@@ -122,7 +122,7 @@ public class Bird : MonoBehaviour
         {
             Invoke("ToDead", 1f);
             biredState = BiredState.WitDead;
-            Debug.Log("销毁111");
+            //Debug.Log("销毁111");
         }
         
     }
