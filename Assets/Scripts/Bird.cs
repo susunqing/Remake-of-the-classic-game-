@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public enum BiredState
@@ -24,8 +25,9 @@ public class Bird : MonoBehaviour
     public bool isMouseDown;
     //飞行速度
     public float flySpeed = 10f;
-
-    private Rigidbody2D rig;
+    //小鸟是否在飞行
+    private bool isFlying = false;
+    protected Rigidbody2D rig;
     #region Unity 消息
 
     private void Start()
@@ -44,6 +46,7 @@ public class Bird : MonoBehaviour
                 break;
             case BiredState.AfterShout:
                 StopContorl();
+                SkillControl();
                 break;
             case BiredState.WitDead:
                 break;
@@ -59,10 +62,11 @@ public class Bird : MonoBehaviour
     {
 
         biredState = BiredState.BeforeShout;
-        if (biredState == BiredState.BeforeShout)
+        if (biredState == BiredState.BeforeShout && EventSystem.current.IsPointerOverGameObject()==false)
         {
             isMouseDown = true;
             SlingShot.Instance.StartDraw(transform);
+            AudioManager.Instance.BirdSelectDelegate(this.transform.position);
         }
     }
 
@@ -74,11 +78,45 @@ public class Bird : MonoBehaviour
             SlingShot.Instance.EndDraw();
             Fly();
             biredState = BiredState.AfterShout;
+            AudioManager.Instance.BirdFlyingDelegate(this.transform.position);
+            isFlying = true;
+        }
+    }
+    /// <summary>
+    /// 小鸟碰撞到物体
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (biredState==BiredState.AfterShout)
+        {
+            isFlying = false;
+        }
+       
+    }
+    #endregion
+
+
+    private void SkillControl()
+    {
+        if (Input.GetMouseButtonDown(0) && isFlying == true&& !EventSystem.current.IsPointerOverGameObject()&& EventSystem.current.IsPointerOverGameObject() == false)
+        {
+            FlyingSkill();
+        }
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false)
+        {
+            FullSkill();
         }
     }
 
-    #endregion
+    protected virtual void FlyingSkill()
+    {
 
+    }
+    protected virtual void FullSkill()
+    {
+
+    }
 
     private void MoveCollider()
     {
@@ -115,22 +153,22 @@ public class Bird : MonoBehaviour
         //biredState = BiredState.BeforeShout;
         transform.position = position;
     }
-    private void StopContorl() 
+    private void StopContorl()
     {
-        
-        if (rig.velocity.magnitude<1f)
+
+        if (rig.velocity.magnitude < 1f)
         {
             Invoke("ToDead", 1f);
             biredState = BiredState.WitDead;
-            Debug.Log("销毁111");
+           
         }
-        
+
     }
 
-    private void ToDead()
+    protected void ToDead()
     {
         Destroy(gameObject);
-        GameObject.Instantiate(Resources.Load("Boom1"),transform.position,Quaternion.identity);
+        GameObject.Instantiate(Resources.Load("Boom1"), transform.position, Quaternion.identity);
         Manager.Instance.LoadNextBird();
     }
 
