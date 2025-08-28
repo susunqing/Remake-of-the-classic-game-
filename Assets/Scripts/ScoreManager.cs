@@ -36,10 +36,11 @@ public class ScoreManager : MonoBehaviour
         scoreSpritesDict.TryGetValue(score, out scoreArray);
 
         int index = Random.Range(0, scoreArray.Length);
-        Debug.Log(index + "dd"+scoreArray.Length);
+        //Debug.Log(index + "dd"+scoreArray.Length);
         Sprite sprite = scoreArray[index];
 
         scoreGo.GetComponent<SpriteRenderer>().sprite = sprite;
+        Destroy(scoreGo,1f);
     }
 
 }

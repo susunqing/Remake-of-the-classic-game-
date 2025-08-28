@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +10,9 @@ public class Pig : Destructible
     {
         base.Dead();
         Manager.Instance.OnDeadPig();
-      //  Debug.Log("Pig.Dead() ±»µ÷ÓÃ");
+      //  Debug.Log("Pig.Dead() è¢«è°ƒç”¨");
         ScoreManager.Instance.ShowScore(transform.position, 3000);
-        
+        AudioManager.Instance.PigCollisionDelegate(this.transform.position);
 
 
 

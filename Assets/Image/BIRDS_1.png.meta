@@ -768,12 +768,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BIRDS_1_41
+      name: fail
       rect:
         serializedVersion: 2
         x: 41
         y: 532
-        width: 126
+        width: 124
         height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2049,7 +2049,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BIRDS_1_105
+      name: BigMouthBird
       rect:
         serializedVersion: 2
         x: 714
@@ -2553,7 +2553,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BIRDS_1_129
+      name: yellow
       rect:
         serializedVersion: 2
         x: 634
@@ -2742,7 +2742,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BIRDS_1_138
+      name: BlockBird
       rect:
         serializedVersion: 2
         x: 482
@@ -3718,7 +3718,6 @@ TextureImporter:
       BIRDS_1_115: 1425409706
       BIRDS_1_28: 1567395811
       BIRDS_1_155: -576887337
-      BIRDS_1_41: 1599318208
       BIRDS_1_164: -1456281612
       BIRDS_1_60: 1555259684
       BIRDS_1_52: -1458386472
@@ -3745,6 +3744,7 @@ TextureImporter:
       BIRDS_1_139: 1330729638
       BIRDS_1_68: -845709832
       BIRDS_1_132: -687417085
+      yellow: -525197660
       BIRDS_1_30: 845254635
       BIRDS_1_9: 984523277
       BIRDS_1_1: -1791518830
@@ -3755,11 +3755,11 @@ TextureImporter:
       BIRDS_1_114: 1271632942
       BIRDS_1_22: 799743766
       BIRDS_1_135: 2093967295
-      BIRDS_1_138: -1109140261
+      BIRDS_1_182: -1057536813
       BIRDS_1_127: 278242759
       BIRDS_1_64: 1946305353
       BIRDS_1_141: 1669192706
-      BIRDS_1_182: -1057536813
+      BlockBird: -1109140261
       BIRDS_1_15: 1883635860
       BIRDS_1_24: -912543813
       BIRDS_1_21: 1408888909
@@ -3770,6 +3770,7 @@ TextureImporter:
       BIRDS_1_151: -2060194991
       BIRDS_1_111: -979255151
       SlingShot_left: -134772899
+      BigMouthBird: 406610192
       BIRDS_1_49: 94997508
       BIRDS_1_101: 651723243
       2: -1555596522
@@ -3799,11 +3800,11 @@ TextureImporter:
       BIRDS_1_124: -1342805188
       BIRDS_1_79: 471257239
       BIRDS_1_4: 1807529451
-      BIRDS_1_129: -525197660
       BIRDS_1_172: -211900039
       BIRDS_1_134: 1963367833
       BIRDS_1_32: 747222347
       BIRDS_1_175: 1829785624
+      fail: 1599318208
       BIRDS_1_170: -1220163232
       BIRDS_1_166: -1000396347
       BIRDS_1_70: 1429158658
@@ -3858,7 +3859,6 @@ TextureImporter:
       BIRDS_1_167: 1043245530
       BIRDS_1_2: -741412076
       BIRDS_1_86: 1478257843
-      BIRDS_1_105: 406610192
       BIRDS_1_89: 1745051253
       BIRDS_1_84: 474619972
       BIRDS_1_67: 2009275268
