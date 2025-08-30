@@ -22,15 +22,12 @@ public class GameOverUi : MonoBehaviour
         animator.SetTrigger("isShow");
 
         this.startCount = startCount;
-
+        ShwoStar();
     }
-    private void Start()
-    {
-        // Debug.Log("GameUI");
-        Show(1);
-    }
+  
     public void ShwoStar()
     {
+        Debug.Log(startCount+"+++111111");
         if (startCount==0)
         {
             failPig.gameObject.SetActive(true);

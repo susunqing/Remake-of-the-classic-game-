@@ -1,27 +1,31 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    private List<Bird> birdList = new List<Bird>();// Ğ¡ÄñÁĞ±í
-    private int currentIndex = -1; // µ±Ç°Ğ¡ÄñË÷Òı
-    public int totalPigs; // ×ÜÖíÊıÁ¿
-    public int deadPigs;//ËÀÍöÊıÁ¿
-    private FollowTarget followTarget; //¸úËæÄ¿±ê
-    //µ¥ÀıÄ£Ê½
+    private List<Bird> birdList = new List<Bird>();// å°é¸Ÿåˆ—è¡¨
+    private int currentIndex = -1; // å½“å‰å°é¸Ÿç´¢å¼•
+    public int totalPigs; // æ€»çŒªæ•°é‡
+    public int deadPigs;//æ­»äº¡æ•°é‡
+    private FollowTarget followTarget; //è·Ÿéšç›®æ ‡
+    GameOverUi gameOver;
+    //å•ä¾‹æ¨¡å¼
     public static Manager Instance { get; private set; }
     private void Start()
     {
         Instance = this;
         birdList.AddRange(FindObjectsOfType<Bird>(false));
-        totalPigs = FindObjectsOfType<Pig>(false).Length; // »ñÈ¡³¡¾°ÖĞËùÓĞÖíµÄÊıÁ¿
+        totalPigs = FindObjectsOfType<Pig>(false).Length; // è·å–åœºæ™¯ä¸­æ‰€æœ‰çŒªçš„æ•°é‡
                                                           //Debug.Log(birdList.Count);
         followTarget = Camera.main.GetComponent<FollowTarget>();
         LoadNextBird();
       
     }
-
+    private void Awake()
+    {
+        gameOver = FindObjectOfType<GameOverUi>(includeInactive: true);
+    }
     public  void OnDeadPig()
     {
         deadPigs++;
@@ -33,7 +37,23 @@ public class Manager : MonoBehaviour
 
    private void GameOver()
     {
-        Debug.Log("ÓÎÏ·½áÊø");
+        float deadPigPercentage=deadPigs*1f/totalPigs;
+        if(deadPigPercentage >= 0.8f)
+        {
+            gameOver.Show(3);
+        }
+        else if (deadPigPercentage >= 0.5f)
+        {
+            gameOver.Show(2);
+        }
+        else if (deadPigPercentage >= 0.3f)
+        {
+            gameOver.Show(1);
+        }
+        else
+        {
+            gameOver.Show(0);
+        }
     }
     public void LoadNextBird()
     {
